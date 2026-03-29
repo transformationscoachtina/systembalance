@@ -1,4 +1,5 @@
 "use client";
+import NewsletterForm from "./components/NewsletterForm";
 import { useEffect, useRef, useState, ReactNode } from "react";
 
 const useInView = (threshold = 0.15) => {
@@ -302,7 +303,23 @@ export default function Home() {
             </p>
           </FadeIn>
         </section>
-
+{/* NEWSLETTER */}
+<section style={{ background: "#fff", padding: "80px 48px" }}>
+  <div style={{ maxWidth: 560, margin: "0 auto", textAlign: "center" }}>
+    <FadeIn>
+      <p style={{ fontFamily: "'Lato', sans-serif", fontSize: 11, letterSpacing: "0.24em", color: "#7AADA0", textTransform: "uppercase", marginBottom: 12 }}>
+        Bleib in Verbindung
+      </p>
+      <h2 style={{ fontFamily: "'League Spartan', sans-serif", fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 600, color: "#2C3E35", marginBottom: 12, letterSpacing: "0.02em" }}>
+        Hol dir Inspiration & Updates
+      </h2>
+      <p style={{ fontFamily: "'Lato', sans-serif", fontStyle: "italic", fontSize: 16, color: "#6B8C82", marginBottom: 36, lineHeight: 1.7 }}>
+        Tipps zur Nervensystem-Regulation, neue Angebote und Einblicke – direkt in dein Postfach.
+      </p>
+      <NewsletterForm />
+    </FadeIn>
+  </div>
+</section>
         {/* BOTTOM CTA */}
         <section id="start" style={{ background: "var(--dark)", padding: "100px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -60, left: -60, width: 260, height: 260, borderRadius: "50%", border: "1px solid rgba(122,173,160,0.12)", pointerEvents: "none" }}/>
