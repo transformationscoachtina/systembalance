@@ -28,33 +28,19 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: ReactNode; 
   );
 };
 
-// Logo: Head silhouette with house inside — clean SVG interpretation
 const Logo = ({ size = 44 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Head silhouette outline */}
-    <path
-      d="M40 8 C24 8 14 20 14 34 C14 44 18 52 26 57 L26 64 C26 66 28 68 30 68 L50 68 C52 68 54 66 54 64 L54 57 C62 52 66 44 66 34 C66 20 56 8 40 8 Z"
-      fill="none" stroke="#4A7C6F" strokeWidth="1.8" strokeLinejoin="round"
-    />
-    {/* Neck base */}
+    <path d="M40 8 C24 8 14 20 14 34 C14 44 18 52 26 57 L26 64 C26 66 28 68 30 68 L50 68 C52 68 54 66 54 64 L54 57 C62 52 66 44 66 34 C66 20 56 8 40 8 Z" fill="none" stroke="#4A7C6F" strokeWidth="1.8" strokeLinejoin="round"/>
     <line x1="30" y1="68" x2="50" y2="68" stroke="#4A7C6F" strokeWidth="1.8"/>
-    {/* Small house inside the head */}
-    {/* House roof */}
     <path d="M29 42 L40 32 L51 42" fill="none" stroke="#4A7C6F" strokeWidth="1.4" strokeLinejoin="round"/>
-    {/* House walls */}
-    <rect x="31" y="42" width="18" height="14" rx="0.5" fill="none" stroke="#8906A" strokeWidth="1.4"/>
-    {/* Door */}
-    <rect x="37" y="49" width="6" height="7" rx="3" fill="none" stroke="#8906A" strokeWidth="1.2"/>
-    {/* Window left */}
+    <rect x="31" y="42" width="18" height="14" rx="0.5" fill="none" stroke="#4A7C6F" strokeWidth="1.4"/>
+    <rect x="37" y="49" width="6" height="7" rx="3" fill="none" stroke="#4A7C6F" strokeWidth="1.2"/>
     <rect x="33" y="44" width="4" height="4" rx="0.5" fill="none" stroke="#4A7C6F" strokeWidth="1"/>
-    {/* Window right */}
     <rect x="43" y="44" width="4" height="4" rx="0.5" fill="none" stroke="#4A7C6F" strokeWidth="1"/>
-    {/* Chimney */}
     <rect x="44" y="29" width="3" height="5" fill="none" stroke="#4A7C6F" strokeWidth="1.2"/>
-    {/* Small rays above roof suggesting warmth/light */}
-    <line x1="40" y1="27" x2="40" y2="24" stroke="#8906A" strokeWidth="1" opacity="0.5"/>
-    <line x1="35" y1="29" x2="33" y2="27" stroke="#8906A " strokeWidth="1" opacity="0.4"/>
-    <line x1="45" y1="29" x2="47" y2="27" stroke="#8906A " strokeWidth="1" opacity="0.4"/>
+    <line x1="40" y1="27" x2="40" y2="24" stroke="#4A7C6F" strokeWidth="1" opacity="0.5"/>
+    <line x1="35" y1="29" x2="33" y2="27" stroke="#4A7C6F" strokeWidth="1" opacity="0.4"/>
+    <line x1="45" y1="29" x2="47" y2="27" stroke="#4A7C6F" strokeWidth="1" opacity="0.4"/>
   </svg>
 );
 
@@ -75,6 +61,34 @@ const features = [
 
 const logos = ["Yoga Journal", "Mindful", "SWR", "Flow", "Achtsamkeit.de", "Breathe"];
 
+const footerCols = [
+  {
+    titel: "Programm",
+    links: [
+      { name: "Über mich", href: "#" },
+      { name: "8 Wochen", href: "#" },
+      { name: "Testimonials", href: "#" },
+    ],
+  },
+  {
+    titel: "Info",
+    links: [
+      { name: "FAQ", href: "#" },
+      { name: "Kontakt", href: "mailto:deine@email.de" },
+      { name: "Datenschutz", href: "/datenschutz" },
+      { name: "Impressum", href: "/impressum" },
+    ],
+  },
+  {
+    titel: "Folge mir",
+    links: [
+      { name: "Instagram", href: "#" },
+      { name: "Newsletter", href: "#" },
+      { name: "Podcast", href: "#" },
+    ],
+  },
+];
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -85,18 +99,9 @@ export default function Home() {
 
   return (
     <>
-      {/* Google Fonts: Angella White (script), League Spartan (bold caps), Lato (body) */}
       <style global jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=League+Spartan:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        /* Angella White via CDN */
-        @font-face {
-          font-family: 'Angella White';
-          src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/주의-not-available/AngellaWhite.ttf') format('truetype');
-        }
-
         :root {
           --mint: #4A7C6F;
           --mint-light: #7AADA0;
@@ -107,23 +112,16 @@ export default function Home() {
           --text: #3A4E45;
           --muted: #6B8C82;
         }
-
         body { background: var(--bg); color: var(--text); }
-
-        .font-script { font-family: 'Dancing Script', cursive; font-style: italic; }
-        .font-spartan { font-family: 'League Spartan', sans-serif; }
-        .font-lato { font-family: 'Lato', sans-serif; }
-
         .btn-primary {
           display: inline-block; background: var(--mint); color: #F7FAF9;
-          padding: 14px 38px; border-radius: 100px;
+          padding: 15px 40px; border-radius: 100px;
           font-family: 'League Spartan', sans-serif; font-size: 14px;
           letter-spacing: 0.08em; font-weight: 600; cursor: pointer; border: none;
           transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
           text-decoration: none;
         }
         .btn-primary:hover { background: #3A6459; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(74,124,111,0.28); }
-
         .btn-outline {
           display: inline-block; background: transparent; color: var(--mint);
           padding: 13px 38px; border-radius: 100px;
@@ -133,13 +131,13 @@ export default function Home() {
           transition: all 0.25s; text-decoration: none;
         }
         .btn-outline:hover { background: var(--mint); color: #F7FAF9; transform: translateY(-2px); }
-
         .feature-card {
           background: #fff; border: 1px solid #C8E0D8; border-radius: 18px;
           padding: 30px 26px; transition: transform 0.25s, box-shadow 0.25s;
         }
         .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(74,124,111,0.1); }
-
+        .nav-link { color: var(--mint); font-size: 14px; text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; font-family: 'Lato', sans-serif; }
+        .nav-link:hover { color: var(--dark); }
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .features-grid { grid-template-columns: 1fr !important; }
@@ -149,13 +147,12 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Load fonts via link tag workaround */}
-      {typeof document !== 'undefined' && (() => {
-        const id = 'gfonts-sb';
+      {typeof document !== "undefined" && (() => {
+        const id = "gfonts-sb";
         if (!document.getElementById(id)) {
-          const l = document.createElement('link');
-          l.id = id; l.rel = 'stylesheet';
-          l.href = 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=League+Spartan:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap';
+          const l = document.createElement("link");
+          l.id = id; l.rel = "stylesheet";
+          l.href = "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=League+Spartan:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap";
           document.head.appendChild(l);
         }
         return null;
@@ -172,11 +169,9 @@ export default function Home() {
           transition: "all 0.35s ease", padding: "16px 48px",
           display: "flex", justifyContent: "space-between", alignItems: "center"
         }}>
-          {/* Logo + Brand name */}
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <Logo size={42} />
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Logo size={38} />
             <div style={{ lineHeight: 1 }}>
-              {/* "System" in Angella White / Dancing Script, "Balance" in League Spartan */}
               <div style={{ display: "flex", alignItems: "baseline", gap: 3 }}>
                 <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: 22, color: "var(--mint)", fontWeight: 600 }}>System</span>
                 <span style={{ fontFamily: "'League Spartan', sans-serif", fontSize: 16, color: "var(--dark)", fontWeight: 700, letterSpacing: "0.04em" }}>Balance</span>
@@ -187,20 +182,18 @@ export default function Home() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-            <a href="#programm" style={{ fontFamily: "'Lato', sans-serif", color: "var(--mint)", fontSize: 14, textDecoration: "none", letterSpacing: "0.04em" }}>Programm</a>
-            <a href="#ablauf" style={{ fontFamily: "'Lato', sans-serif", color: "var(--mint)", fontSize: 14, textDecoration: "none", letterSpacing: "0.04em" }}>Ablauf</a>
+            <a href="#programm" className="nav-link">Programm</a>
+            <a href="#ablauf" className="nav-link">Ablauf</a>
             <a href="#start" className="btn-primary" style={{ padding: "10px 24px", fontSize: 13 }}>Anmelden</a>
           </div>
         </nav>
 
         {/* HERO */}
-        <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "120px 48px 80px" }}>
+        <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "120px 48px 80px", position: "relative" }}>
           <FadeIn>
             <p style={{ fontFamily: "'Lato', sans-serif", fontSize: 11, letterSpacing: "0.28em", color: "var(--mint-light)", textTransform: "uppercase", marginBottom: 32 }}>
               8-Wochen-Programm · Coaching
             </p>
-
-            {/* Main headline: "Raum" in script, "für INNERE PROZESSE" mixed */}
             <div style={{ marginBottom: 32 }}>
               <div style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(52px, 7vw, 90px)", color: "var(--mint)", lineHeight: 1, fontWeight: 600 }}>
                 Raum
@@ -212,27 +205,22 @@ export default function Home() {
                 INNERE PROZESSE
               </div>
             </div>
-
             <p style={{ fontFamily: "'Lato', sans-serif", fontSize: 18, lineHeight: 1.8, color: "var(--text)", maxWidth: 500, margin: "0 auto 12px" }}>
               Finde zurück in deine innere Ruhe – ohne dich weiter zu überfordern.
             </p>
             <p style={{ fontFamily: "'Lato', sans-serif", fontStyle: "italic", fontSize: 15, lineHeight: 1.7, color: "var(--muted)", maxWidth: 460, margin: "0 auto 44px" }}>
               Für Yogalehrerinnen & Coaches, die viel geben, aber sich selbst kaum noch spüren.
             </p>
-
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", marginBottom: 52 }}>
               <a href="#start" className="btn-primary">8 Wochen Programm</a>
               <a href="#ablauf" className="btn-outline">Mehr erfahren</a>
             </div>
-
             <div style={{ display: "flex", gap: 36, flexWrap: "wrap", justifyContent: "center" }}>
               {["✔ Ruhiger reagieren", "✔ Klar Nein sagen", "✔ Wieder du sein"].map((t) => (
-                <span key={t} style={{ fontFamily: "'Lato', sans-serif", fontSize: 13, color: "var(--muted)", letterSpacing: "0.02em" }}>{t}</span>
+                <span key={t} style={{ fontFamily: "'Lato', sans-serif", fontSize: 13, color: "var(--muted)" }}>{t}</span>
               ))}
             </div>
           </FadeIn>
-
-          {/* Decorative mint circle */}
           <div style={{ position: "absolute", top: "12%", right: "6%", width: 220, height: 220, borderRadius: "50%", border: "1px solid rgba(122,173,160,0.2)", pointerEvents: "none" }}/>
           <div style={{ position: "absolute", top: "18%", right: "10%", width: 120, height: 120, borderRadius: "50%", border: "1px solid rgba(122,173,160,0.15)", pointerEvents: "none" }}/>
           <div style={{ position: "absolute", bottom: "10%", left: "5%", width: 160, height: 160, borderRadius: "50%", border: "1px solid rgba(122,173,160,0.15)", pointerEvents: "none" }}/>
@@ -359,19 +347,21 @@ export default function Home() {
                   Für Yogalehrerinnen & Coaches auf dem Weg zu sich selbst.
                 </p>
               </div>
-              {[
-                { titel: "Programm", links: ["Über mich", "8 Wochen", "Testimonials"] },
-                { titel: "Info", links: ["FAQ", "Kontakt", "Datenschutz"] },
-                { titel: "Folge mir", links: ["Instagram", "Newsletter", "Podcast"] },
-              ].map(col => (
+              {footerCols.map(col => (
                 <div key={col.titel}>
-                  <p style={{ fontFamily: "'League Spartan', sans-serif", fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "#7AADA0", marginBottom: 16, fontWeight: 600 }}>{col.titel}</p>
+                  <p style={{ fontFamily: "'League Spartan', sans-serif", fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "#7AADA0", marginBottom: 16, fontWeight: 600 }}>
+                    {col.titel}
+                  </p>
                   {col.links.map(l => (
-                    <p key={l} style={{ marginBottom: 10 }}>
-                      <a href="#" style={{ fontFamily: "'Lato', sans-serif", fontSize: 14, color: "#5A8A7E", textDecoration: "none", transition: "color 0.2s" }}
-                         onMouseOver={e => (e.currentTarget.style.color = "#A8D5C8")}
-                         onMouseOut={e => (e.currentTarget.style.color = "#5A8A7E")}
-                      >{l}</a>
+                    <p key={l.name} style={{ marginBottom: 10 }}>
+                      <a
+                        href={l.href}
+                        style={{ fontFamily: "'Lato', sans-serif", fontSize: 14, color: "#5A8A7E", textDecoration: "none", transition: "color 0.2s" }}
+                        onMouseOver={e => { e.currentTarget.style.color = "#A8D5C8"; }}
+                        onMouseOut={e => { e.currentTarget.style.color = "#5A8A7E"; }}
+                      >
+                        {l.name}
+                      </a>
                     </p>
                   ))}
                 </div>
